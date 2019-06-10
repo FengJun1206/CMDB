@@ -1,0 +1,838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="django_migrations"/>
+    <table id="7" parent="2" name="repository_admininfo"/>
+    <table id="8" parent="2" name="repository_asset"/>
+    <table id="9" parent="2" name="repository_asset_tag"/>
+    <table id="10" parent="2" name="repository_assetrecord"/>
+    <table id="11" parent="2" name="repository_businessunit"/>
+    <table id="12" parent="2" name="repository_disk"/>
+    <table id="13" parent="2" name="repository_errorlog"/>
+    <table id="14" parent="2" name="repository_idc"/>
+    <table id="15" parent="2" name="repository_memory"/>
+    <table id="16" parent="2" name="repository_networkdevice"/>
+    <table id="17" parent="2" name="repository_nic"/>
+    <table id="18" parent="2" name="repository_server"/>
+    <table id="19" parent="2" name="repository_tag"/>
+    <table id="20" parent="2" name="repository_usergroup"/>
+    <table id="21" parent="2" name="repository_usergroup_users"/>
+    <table id="22" parent="2" name="repository_userprofile"/>
+    <table id="23" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="24" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="25" parent="6" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="26" parent="6" name="app">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="6" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="6" name="applied">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="29" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="7" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="7" name="username">
+      <Position>1</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="7" name="password">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="7" name="user_info_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="34" parent="7" name="sqlite_autoindex_repository_admininfo_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_info_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="36" parent="7">
+      <ColNames>user_info_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_admininfo_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="37" parent="7">
+      <ColNames>user_info_id</ColNames>
+      <RefTableName>repository_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="38" parent="8" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="39" parent="8" name="device_type_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="8" name="device_status_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="8" name="cabinet_num">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="42" parent="8" name="cabinet_order">
+      <Position>4</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="43" parent="8" name="latest_date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="44" parent="8" name="create_at">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="8" name="business_unit_id">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="46" parent="8" name="idc_id">
+      <Position>8</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <index id="47" parent="8" name="repository_asset_business_unit_id_327dc356">
+      <ColNames>business_unit_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="48" parent="8" name="repository_asset_idc_id_26dbee09">
+      <ColNames>idc_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="49" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="50" parent="8">
+      <ColNames>business_unit_id</ColNames>
+      <RefTableName>repository_businessunit</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="51" parent="8">
+      <ColNames>idc_id</ColNames>
+      <RefTableName>repository_idc</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="52" parent="9" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="53" parent="9" name="asset_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="9" name="tag_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="55" parent="9" name="repository_asset_tag_asset_id_tag_id_12d2de2d_uniq">
+      <ColNames>asset_id
+tag_id</ColNames>
+      <ColumnCollations>
+</ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="56" parent="9" name="repository_asset_tag_asset_id_182b4c6f">
+      <ColNames>asset_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="57" parent="9" name="repository_asset_tag_tag_id_1616ce10">
+      <ColNames>tag_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="58" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="59" parent="9">
+      <ColNames>asset_id</ColNames>
+      <RefTableName>repository_asset</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="60" parent="9">
+      <ColNames>tag_id</ColNames>
+      <RefTableName>repository_tag</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="61" parent="10" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="10" name="content">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="63" parent="10" name="create_at">
+      <Position>2</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="10" name="asset_obj_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="10" name="creator_id">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <index id="66" parent="10" name="repository_assetrecord_asset_obj_id_3897f17a">
+      <ColNames>asset_obj_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="67" parent="10" name="repository_assetrecord_creator_id_8a6821f4">
+      <ColNames>creator_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="68" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="69" parent="10">
+      <ColNames>asset_obj_id</ColNames>
+      <RefTableName>repository_asset</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="70" parent="10">
+      <ColNames>creator_id</ColNames>
+      <RefTableName>repository_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="71" parent="11" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="72" parent="11" name="name">
+      <Position>1</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="73" parent="11" name="contact_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="11" name="manager_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="75" parent="11" name="sqlite_autoindex_repository_businessunit_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="76" parent="11" name="repository_businessunit_contact_id_8120971c">
+      <ColNames>contact_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="77" parent="11" name="repository_businessunit_manager_id_b5b3c2cb">
+      <ColNames>manager_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="78" parent="11">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="79" parent="11">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_businessunit_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="80" parent="11">
+      <ColNames>contact_id</ColNames>
+      <RefTableName>repository_usergroup</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="81" parent="11">
+      <ColNames>manager_id</ColNames>
+      <RefTableName>repository_usergroup</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="82" parent="12" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="83" parent="12" name="slot">
+      <Position>1</Position>
+      <DataType>varchar(8)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="12" name="model">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="12" name="capacity">
+      <Position>3</Position>
+      <DataType>real|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="12" name="pd_type">
+      <Position>4</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="87" parent="12" name="server_obj_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="88" parent="12" name="repository_disk_server_obj_id_5e5d02f6">
+      <ColNames>server_obj_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="89" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="90" parent="12">
+      <ColNames>server_obj_id</ColNames>
+      <RefTableName>repository_server</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="91" parent="13" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="92" parent="13" name="title">
+      <Position>1</Position>
+      <DataType>varchar(16)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="13" name="content">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="13" name="create_at">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="95" parent="13" name="asset_obj_id">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <index id="96" parent="13" name="repository_errorlog_asset_obj_id_b887b7ad">
+      <ColNames>asset_obj_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="97" parent="13">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="98" parent="13">
+      <ColNames>asset_obj_id</ColNames>
+      <RefTableName>repository_asset</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="99" parent="14" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="100" parent="14" name="name">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="101" parent="14" name="floor">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="102" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="103" parent="15" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="104" parent="15" name="slot">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="105" parent="15" name="manufacturer">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="106" parent="15" name="model">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="107" parent="15" name="capacity">
+      <Position>4</Position>
+      <DataType>real|0</DataType>
+    </column>
+    <column id="108" parent="15" name="sn">
+      <Position>5</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="109" parent="15" name="speed">
+      <Position>6</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="110" parent="15" name="server_obj_id">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="111" parent="15" name="repository_memory_server_obj_id_07c841be">
+      <ColNames>server_obj_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="112" parent="15">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="113" parent="15">
+      <ColNames>server_obj_id</ColNames>
+      <RefTableName>repository_server</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="114" parent="16" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="115" parent="16" name="management_ip">
+      <Position>1</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="116" parent="16" name="vlan_ip">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="117" parent="16" name="intranet_ip">
+      <Position>3</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="118" parent="16" name="sn">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="119" parent="16" name="manufacture">
+      <Position>5</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="120" parent="16" name="model">
+      <Position>6</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="121" parent="16" name="port_num">
+      <Position>7</Position>
+      <DataType>smallint|0</DataType>
+    </column>
+    <column id="122" parent="16" name="device_detail">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="123" parent="16" name="asset_id">
+      <Position>9</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="124" parent="16" name="sqlite_autoindex_repository_networkdevice_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>sn</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="125" parent="16" name="sqlite_autoindex_repository_networkdevice_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>asset_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="126" parent="16">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="127" parent="16">
+      <ColNames>sn</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_networkdevice_1</UnderlyingIndexName>
+    </key>
+    <key id="128" parent="16">
+      <ColNames>asset_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_networkdevice_2</UnderlyingIndexName>
+    </key>
+    <foreign-key id="129" parent="16">
+      <ColNames>asset_id</ColNames>
+      <RefTableName>repository_asset</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="130" parent="17" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="131" parent="17" name="name">
+      <Position>1</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="132" parent="17" name="hwaddr">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="133" parent="17" name="netmask">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="134" parent="17" name="ipaddrs">
+      <Position>4</Position>
+      <DataType>varchar(256)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="17" name="up">
+      <Position>5</Position>
+      <DataType>bool|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="136" parent="17" name="server_obj_id">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="137" parent="17" name="repository_nic_server_obj_id_5c83b10a">
+      <ColNames>server_obj_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="138" parent="17">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="139" parent="17">
+      <ColNames>server_obj_id</ColNames>
+      <RefTableName>repository_server</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="140" parent="18" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="141" parent="18" name="hostname">
+      <Position>1</Position>
+      <DataType>varchar(128)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="142" parent="18" name="sn">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="143" parent="18" name="manufacturer">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="144" parent="18" name="model">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="145" parent="18" name="manage_ip">
+      <Position>5</Position>
+      <DataType>char(39)|0</DataType>
+    </column>
+    <column id="146" parent="18" name="os_platform">
+      <Position>6</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="147" parent="18" name="os_version">
+      <Position>7</Position>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="148" parent="18" name="cpu_count">
+      <Position>8</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="149" parent="18" name="cpu_physical_count">
+      <Position>9</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="150" parent="18" name="cpu_model">
+      <Position>10</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="151" parent="18" name="create_at">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="152" parent="18" name="asset_id">
+      <Position>12</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="153" parent="18" name="sqlite_autoindex_repository_server_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>hostname</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="154" parent="18" name="sqlite_autoindex_repository_server_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>asset_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="155" parent="18" name="repository_server_sn_b91311c2">
+      <ColNames>sn</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="156" parent="18">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="157" parent="18">
+      <ColNames>hostname</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_server_1</UnderlyingIndexName>
+    </key>
+    <key id="158" parent="18">
+      <ColNames>asset_id</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_server_2</UnderlyingIndexName>
+    </key>
+    <foreign-key id="159" parent="18">
+      <ColNames>asset_id</ColNames>
+      <RefTableName>repository_asset</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="160" parent="19" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="161" parent="19" name="name">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="162" parent="19" name="sqlite_autoindex_repository_tag_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="163" parent="19">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="164" parent="19">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_tag_1</UnderlyingIndexName>
+    </key>
+    <column id="165" parent="20" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="166" parent="20" name="name">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="167" parent="20" name="sqlite_autoindex_repository_usergroup_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="168" parent="20">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="169" parent="20">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_repository_usergroup_1</UnderlyingIndexName>
+    </key>
+    <column id="170" parent="21" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="171" parent="21" name="usergroup_id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="172" parent="21" name="userprofile_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="173" parent="21" name="repository_usergroup_users_usergroup_id_userprofile_id_a8c27955_uniq">
+      <ColNames>usergroup_id
+userprofile_id</ColNames>
+      <ColumnCollations>
+</ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="174" parent="21" name="repository_usergroup_users_usergroup_id_3b7357f7">
+      <ColNames>usergroup_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <index id="175" parent="21" name="repository_usergroup_users_userprofile_id_4cf8c06b">
+      <ColNames>userprofile_id</ColNames>
+      <ColumnCollations></ColumnCollations>
+    </index>
+    <key id="176" parent="21">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="177" parent="21">
+      <ColNames>usergroup_id</ColNames>
+      <RefTableName>repository_usergroup</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <foreign-key id="178" parent="21">
+      <ColNames>userprofile_id</ColNames>
+      <RefTableName>repository_userprofile</RefTableName>
+      <RefColNames>id</RefColNames>
+      <Deferrable>1</Deferrable>
+      <InitiallyDeferred>1</InitiallyDeferred>
+    </foreign-key>
+    <column id="179" parent="22" name="id">
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="180" parent="22" name="name">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="181" parent="22" name="email">
+      <Position>2</Position>
+      <DataType>varchar(254)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="182" parent="22" name="phone">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="183" parent="22" name="mobile">
+      <Position>4</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="184" parent="22">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="185" parent="23" name="type">
+      <DataType>text|0</DataType>
+    </column>
+    <column id="186" parent="23" name="name">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="187" parent="23" name="tbl_name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="188" parent="23" name="rootpage">
+      <Position>3</Position>
+      <DataType>int|0</DataType>
+    </column>
+    <column id="189" parent="23" name="sql">
+      <Position>4</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="190" parent="24" name="name"/>
+    <column id="191" parent="24" name="seq">
+      <Position>1</Position>
+    </column>
+  </database-model>
+</dataSource>

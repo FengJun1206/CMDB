@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.js' %}"></script>
+<script>
+
+     var col =  {
+                    'q': 'device_type_id',
+                    'title': '类型',
+                    'display': True,
+                    'text': {'content': '{n}', 'kwargs': {'n': '@@device_type_choices'}},
+                    'attrs': {'name': 'device_type_id', 'origin': "@device_type_id", 'edit-enable': 'true', 'edit-type': 'select', 'global-name': 'device_type_choices'}
+                };
+     $.each(col, function (k, v) {
+         console.log(k, v)
+     })
+</script>
+</body>
+</html>
