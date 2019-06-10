@@ -1,5 +1,22 @@
 (function () {
     var requestURL = null;
+    
+      // 分页
+    function bindPager() {
+        // 事件委托，给idPagination（ul 标签） 下的 a 标签绑定 click 时间
+        $('#idPagination').on('click', 'a', function () {
+            var num = $(this).text();
+            init(num);
+        })
+    }
+
+     /*
+    arg.pagers = <li><a>1</a></li><li><a>2</a></li><li><a>3</a></li><li><a>4</a></li><li><a>5</a></li>
+     */
+    // 分页
+    function initPager(pagers) {
+        $('#idPagination').html(pagers);
+    }
 
 
     // 保存并提交到数据库，通过 ajax 方式提交到后台
@@ -327,7 +344,7 @@
                 initGlobalData(arg.global_dict);
                 initHead(arg.table_config);
                 initBody(arg.table_config, arg.data_list);
-                // initPager(arg.pagers);
+                initPager(arg.pagers);
             }
         })
     }
@@ -457,7 +474,7 @@
         'NB': function (url) {
             requestURL = url;
             init();
-            // bindPager();
+            bindPager();
             bindSaveAll();
             bindReverseAll();
             bindCheckAll();
